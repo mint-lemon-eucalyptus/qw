@@ -1,0 +1,22 @@
+{
+    "name": "qw",
+    "version": "0.0.1",
+    "description": "logging module with filter",
+    "main": "index.js",
+    "scripts": {
+    },
+    "repository": {
+        "type": "git",
+        "url": "ssh://git@websocket-app.tk:3022/~/nodejs/qw.git"
+    },
+    "keywords": [
+        "logging",
+        "filter",
+        "colors"
+    ],
+    "dependencies": {
+        "colors": "*"
+    },
+    "author": "mint",
+    "license": "ISC"
+}
