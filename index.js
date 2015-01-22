@@ -1,10 +1,11 @@
 var config = null;
 var tags = {};
 var colors = require('colors');
-module.exports.config = function (cfg) {
-    config = cfg;
+module.exports.configFromJSON = function (cfg) {
+    config = JSON.parse(JSON.stringify(cfg));
 };
 module.exports.log = function (o) {
+    var callerName = getObjectClass(o);
     if (config[o] === true) {
         tags[o] = function () {
             var now = new Date();
@@ -19,3 +20,16 @@ module.exports.log = function (o) {
         }
     }
 };
+
+
+function getObjectClass(obj) {  //is used by identifying Caller class
+    if (obj && obj.constructor && obj.constructor.toString) {
+        var arr = obj.constructor.toString().match(
+            /function\s*(\w+)/);
+
+        if (arr && arr.length == 2) {
+            return arr[1];
+        }
+    }
+    return undefined;
+}
