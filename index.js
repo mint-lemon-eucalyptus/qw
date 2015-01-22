@@ -1,7 +1,7 @@
 var config = null;
 var tags = {};
 var colors = require('colors');
-module.exports.configFromJSON = function (cfg) {
+module.exports.config = function (cfg) {
     config = JSON.parse(JSON.stringify(cfg));
 };
 module.exports.log = function (o) {
