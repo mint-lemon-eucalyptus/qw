@@ -5,7 +5,7 @@ module.exports.config = function (cfg) {
     config = JSON.parse(JSON.stringify(cfg));
 };
 module.exports.log = function (o) {
-    var callerName = getObjectClass(o);
+    var callerName = typeof o === 'string' ? o : getObjectClass(o);
     if (config[callerName] === true) {
         tags[callerName] = function () {
             var now = new Date();
