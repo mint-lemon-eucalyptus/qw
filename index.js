@@ -6,12 +6,12 @@ module.exports.configFromJSON = function (cfg) {
 };
 module.exports.log = function (o) {
     var callerName = getObjectClass(o);
-    if (config[o] === true) {
-        tags[o] = function () {
+    if (config[callerName] === true) {
+        tags[callerName] = function () {
             var now = new Date();
             var timestamp = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " |";
             var args = Array.prototype.slice.call(arguments);
-            args.unshift(timestamp.red, (o + ':').green);
+            args.unshift(timestamp.red, (callerName + ':').green);
             console.log.apply(console, args);
         }
         return tags[o];
