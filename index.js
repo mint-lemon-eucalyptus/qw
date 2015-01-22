@@ -6,6 +6,7 @@ module.exports.config = function (cfg) {
 };
 module.exports.log = function (o) {
     var callerName = typeof o === 'string' ? o : getObjectClass(o);
+    console.log('init Logger for class:', '"' + callerName + '".', 'state:', config[callerName] == true);
     if (config[callerName] === true) {
         tags[callerName] = function () {
             var now = new Date();
@@ -14,11 +15,11 @@ module.exports.log = function (o) {
             args.unshift(timestamp.red, (callerName + ':').green);
             console.log.apply(console, args);
         }
-        return tags[o];
     } else {
-        return function () {
-        }
+        tags[callerName] = function () {
+        };
     }
+    return tags[callerName];
 };
 
 
@@ -26,7 +27,6 @@ function getObjectClass(obj) {  //is used by identifying Caller class
     if (obj && obj.constructor && obj.constructor.toString) {
         var arr = obj.constructor.toString().match(
             /function\s*(\w+)/);
-
         if (arr && arr.length == 2) {
             return arr[1];
         }
