@@ -3,6 +3,7 @@
     "version": "0.0.1",
     "description": "logging module with filter",
     "main": "index.js",
+    "private": true,
     "scripts": {
     },
     "repository": {
