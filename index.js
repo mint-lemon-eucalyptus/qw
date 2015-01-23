@@ -1,13 +1,19 @@
 var config = null;
 var tags = {};
 var colors = require('colors');
+var opts = {};
+module.exports.setOpts = function (k, v) {
+    opts[k] = v;
+}
 module.exports.config = function (cfg) {
     config = JSON.parse(JSON.stringify(cfg));
 };
 module.exports.log = function (o) {
     var callerName = typeof o === 'string' ? o : getObjectClass(o);
     if (!tags[callerName]) {
-        console.log('init Logger for class:', '"' + callerName + '".', 'state:', config[callerName] == true);
+        if (!opts['supressInitMessages']) {
+            console.log('init Logger for class:', '"' + callerName + '".', 'state:', config[callerName] == true);
+        }
         if (config[callerName] === true) {
             tags[callerName] = function () {
                 var now = new Date();
