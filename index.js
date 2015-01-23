@@ -6,18 +6,20 @@ module.exports.config = function (cfg) {
 };
 module.exports.log = function (o) {
     var callerName = typeof o === 'string' ? o : getObjectClass(o);
-    console.log('init Logger for class:', '"' + callerName + '".', 'state:', config[callerName] == true);
-    if (config[callerName] === true) {
-        tags[callerName] = function () {
-            var now = new Date();
-            var timestamp = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " |";
-            var args = Array.prototype.slice.call(arguments);
-            args.unshift(timestamp.red, (callerName + ':').green);
-            console.log.apply(console, args);
+    if (!tags[callerName]) {
+        console.log('init Logger for class:', '"' + callerName + '".', 'state:', config[callerName] == true);
+        if (config[callerName] === true) {
+            tags[callerName] = function () {
+                var now = new Date();
+                var timestamp = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + " |";
+                var args = Array.prototype.slice.call(arguments);
+                args.unshift(timestamp.red, (callerName + ':').green);
+                console.log.apply(console, args);
+            }
+        } else {
+            tags[callerName] = function () {
+            };
         }
-    } else {
-        tags[callerName] = function () {
-        };
     }
     return tags[callerName];
 };
