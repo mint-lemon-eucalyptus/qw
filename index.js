@@ -1,4 +1,4 @@
-var config = null;
+var config = {};
 var tags = {};
 var colors = require('colors');
 var opts = {};
