@@ -16,7 +16,7 @@
         "colors"
     ],
     "dependencies": {
-        "colors": "*"
+        "colors": "1.0.3"
     },
     "author": "mint",
     "license": "ISC"
