@@ -1,6 +1,6 @@
 {
     "name": "qw-logger",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "description": "logging module with filter",
     "main": "index.js",
     "private": true,
@@ -8,7 +8,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "ssh://git@websocket-app.tk:3022/~/nodejs/qw.git"
+        "url": "git@github.com:mint-lemon-eucalyptus/qw.git"
     },
     "keywords": [
         "logging",
